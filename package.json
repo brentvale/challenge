@@ -2,6 +2,7 @@
   "name": "Evidation",
   "version": "1.0.0",
   "description": "",
+	"homepage": "https://brentvale.github.io/challenge",
   "main": "index.js",
 	"scripts": {
     "start": "webpack-dev-server --inline"
