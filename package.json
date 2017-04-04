@@ -2,10 +2,11 @@
   "name": "Evidation",
   "version": "1.0.0",
   "description": "",
-	"homepage": "https://brentvale.github.io/challenge",
+  "homepage": "https://brentvale.github.io/challenge",
   "main": "index.js",
-	"scripts": {
-    "start": "webpack-dev-server --inline"
+  "scripts": {
+    "start": "webpack-dev-server --inline",
+		"deploy": "npm run build&&gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,8 @@
     "redux": "^3.6.0",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
   }
 }
