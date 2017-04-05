@@ -275,9 +275,9 @@ a{
 body.is-mobile{
 	font-size:100%;
 }
-body.is-mobile input{
+body.is-mobile input[type="text"]{
 /*	greater than 16 prevents auto focus*/
-	font-size:26px;
+	font-size:32px;
 }
 body.is-mobile .form-box-half{
 	width:100%;
