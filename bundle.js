@@ -11603,7 +11603,7 @@ var ParticipationSteps = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (ParticipationSteps.__proto__ || Object.getPrototypeOf(ParticipationSteps)).call(this));
 
 		_this.state = {
-			currentStep: 2,
+			currentStep: 1,
 			percentComplete: 35,
 			providersAndOrganizations: [{
 				"first_name": "John",
@@ -11730,10 +11730,6 @@ var _participation_steps = __webpack_require__(131);
 var _participation_steps2 = _interopRequireDefault(_participation_steps);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Actions
-// import { stepsByTodoId } from '../../reducers/selectors';
-// import { receiveStep } from '../../actions/step_actions';
 
 var mapStateToProps = function mapStateToProps(state) {
   return {};

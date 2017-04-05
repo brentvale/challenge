@@ -62,7 +62,9 @@ class StepTwo extends React.Component{
 									 onChange={this.handleChange}/>
 					</div>
 				</form>
-				{filteredResultsDisplay}	 
+									 
+				{filteredResultsDisplay}
+				
 			</div>
 		)
 	}
