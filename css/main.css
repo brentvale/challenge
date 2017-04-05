@@ -271,6 +271,40 @@ a{
 	margin:2px;
 }
 
+/*MOBILE*/
+body.is-mobile{
+	font-size:80%;
+}
+body.is-mobile .form-box-half{
+	width:100%;
+}
+body.is-mobile .form-box-half.first{
+	padding-right:0;
+	margin-bottom:1em;
+}
+body.is-mobile .form-box-half.second{
+	padding-left:0;
+}
+body.is-mobile .form-container{
+	width: 90%;
+}
+body.is-mobile p{
+	font-size: 1em;
+}
+body.is-mobile p.submit-button, body.is-mobile p.checkbox-info{
+	font-size: 1.4em;
+}
+body.is-mobile .footer-box.left{
+	top: 1200px;
+}
+body.is-mobile .footer-box.right{
+	top:1190px;
+}
+body.is-mobile .footer-box.center{
+	top: 1100px;
+}
+
+/*MEDIA QUERIES*/
 @media only screen and (max-width: 699px) {
 	.form-box-half{
 		width:100%;
