@@ -66,7 +66,7 @@ class StepOne extends React.Component{
 		let submitButton;
 		if(isValid){
 			submitButton =  <div className="button next-button hand-on-hover" onClick={this.handleSubmitForm}>
-												<p className="submit-button validated">Complete the form to continue enrollment</p>
+												<p className="submit-button validated">I understand and wish to continue with enrollment</p>
 											</div>;
 		} else {
 			submitButton =	<div className="button next-button">
