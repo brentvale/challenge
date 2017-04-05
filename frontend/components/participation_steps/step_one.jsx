@@ -7,13 +7,32 @@ class StepOne extends React.Component{
 			firstName: "",
 			lastName: "",
 			birthCity: "",
-			formIsValid: false,
-			consentGiven: false
+			consentGiven: false,
+			//focusTarget can be consentCheckbox or submitButton
+			focusTarget: null
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmitForm = this.handleSubmitForm.bind(this);
 		this.toggleConsentGiven = this.toggleConsentGiven.bind(this);
 		this.alertNavigatingBack = this.alertNavigatingBack.bind(this);
+		this.resetFocused = this.resetFocused.bind(this);
+		this.updateFocused = this.updateFocused.bind(this);
+	}
+	
+	componentDidMount(){
+		var that = this;
+		$(document).keypress(function(e) {
+		    if(e.which == 13) {
+					if(that.state.focusTarget){
+						if(that.state.focusTarget === "consentCheckbox"){
+							that.setState({consentGiven: !that.state.consentGiven});
+						} else if(that.state.focusTarget === "submitButton"){
+							that.handleSubmitForm();
+						}
+					}
+					
+		    }
+		});
 	}
 	
 	alertNavigatingBack(){
@@ -32,6 +51,7 @@ class StepOne extends React.Component{
 		}
 		return false;
 	}
+	
 	handleSubmitForm(){
 		console.log({first_name: this.state.firstName,
 								 last_name: this.state.lastName,
@@ -56,16 +76,36 @@ class StepOne extends React.Component{
 		}
 	}
 	
+	resetFocused(){
+		this.setState({focusTarget: null});
+	}
+	
 	toggleConsentGiven(){
-		console.log("giving consent");
 		this.setState({consentGiven: !this.state.consentGiven});
+	}
+	
+	updateFocused(e){
+		var focusedId = $(e.currentTarget).attr("id");
+		switch(focusedId){
+		case "consentCheckbox":
+			this.setState({focusTarget: "consentCheckbox"});
+			break;
+		case "submitButton":
+			this.setState({focusTarget: "submitButton"});
+			break;
+		}
+		
 	}
 	
 	render(){
 		let isValid = this.formIsValid();
 		let submitButton;
 		if(isValid){
-			submitButton =  <div className="button next-button hand-on-hover" onClick={this.handleSubmitForm}>
+			submitButton =  <div  id="submitButton"
+														className="button next-button hand-on-hover" 
+														onClick={this.handleSubmitForm} 
+														onFocus={this.updateFocused}
+														tabIndex="5">
 												<p className="submit-button validated">I understand and wish to continue with enrollment</p>
 											</div>;
 		} else {
@@ -87,7 +127,8 @@ class StepOne extends React.Component{
 											value={this.state.firstName} 
 											placeholder="John"
 											id="firstName"
-											onChange={this.handleChange}/>
+											onChange={this.handleChange}
+											tabIndex="1"/>
 						</label>
 					</div>
 					
@@ -97,7 +138,8 @@ class StepOne extends React.Component{
 											value={this.state.lastName} 
 											placeholder="Doe"
 											id="lastName"
-											onChange={this.handleChange}/>
+											onChange={this.handleChange}
+											tabIndex="2"/>
 						</label>
 					</div>
 											
@@ -107,12 +149,18 @@ class StepOne extends React.Component{
 										 value={this.state.birthCity} 
 										 placeholder="City Name"
 										 id="birthCity"
-										 onChange={this.handleChange}/>
+										 onChange={this.handleChange}
+										 tabIndex="3"/>
 						</label>
 					</div>
 											
 					<div className="form-box form-box-full">
-						<div className="checkbox" onClick={this.toggleConsentGiven}>
+						<div id="consentCheckbox"
+								 className="checkbox" 
+								 onClick={this.toggleConsentGiven}
+								 onFocus={this.updateFocused}
+								 onBlur={this.resetFocused}
+								 tabIndex="4">
 							{consentFilledIn}
 						</div>
 						<p className="checkbox-info">I consent to participate in the study</p>

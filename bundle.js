@@ -11843,17 +11843,36 @@ var StepOne = function (_React$Component) {
 			firstName: "",
 			lastName: "",
 			birthCity: "",
-			formIsValid: false,
-			consentGiven: false
+			consentGiven: false,
+			//focusTarget can be consentCheckbox or submitButton
+			focusTarget: null
 		};
 		_this.handleChange = _this.handleChange.bind(_this);
 		_this.handleSubmitForm = _this.handleSubmitForm.bind(_this);
 		_this.toggleConsentGiven = _this.toggleConsentGiven.bind(_this);
 		_this.alertNavigatingBack = _this.alertNavigatingBack.bind(_this);
+		_this.resetFocused = _this.resetFocused.bind(_this);
+		_this.updateFocused = _this.updateFocused.bind(_this);
 		return _this;
 	}
 
 	_createClass(StepOne, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			var that = this;
+			$(document).keypress(function (e) {
+				if (e.which == 13) {
+					if (that.state.focusTarget) {
+						if (that.state.focusTarget === "consentCheckbox") {
+							that.setState({ consentGiven: !that.state.consentGiven });
+						} else if (that.state.focusTarget === "submitButton") {
+							that.handleSubmitForm();
+						}
+					}
+				}
+			});
+		}
+	}, {
 		key: "alertNavigatingBack",
 		value: function alertNavigatingBack() {
 			alert("would navigate back.");
@@ -11899,10 +11918,27 @@ var StepOne = function (_React$Component) {
 			}
 		}
 	}, {
+		key: "resetFocused",
+		value: function resetFocused() {
+			this.setState({ focusTarget: null });
+		}
+	}, {
 		key: "toggleConsentGiven",
 		value: function toggleConsentGiven() {
-			console.log("giving consent");
 			this.setState({ consentGiven: !this.state.consentGiven });
+		}
+	}, {
+		key: "updateFocused",
+		value: function updateFocused(e) {
+			var focusedId = $(e.currentTarget).attr("id");
+			switch (focusedId) {
+				case "consentCheckbox":
+					this.setState({ focusTarget: "consentCheckbox" });
+					break;
+				case "submitButton":
+					this.setState({ focusTarget: "submitButton" });
+					break;
+			}
 		}
 	}, {
 		key: "render",
@@ -11912,7 +11948,11 @@ var StepOne = function (_React$Component) {
 			if (isValid) {
 				submitButton = _react2.default.createElement(
 					"div",
-					{ className: "button next-button hand-on-hover", onClick: this.handleSubmitForm },
+					{ id: "submitButton",
+						className: "button next-button hand-on-hover",
+						onClick: this.handleSubmitForm,
+						onFocus: this.updateFocused,
+						tabIndex: "5" },
 					_react2.default.createElement(
 						"p",
 						{ className: "submit-button validated" },
@@ -11968,7 +12008,8 @@ var StepOne = function (_React$Component) {
 								value: this.state.firstName,
 								placeholder: "John",
 								id: "firstName",
-								onChange: this.handleChange })
+								onChange: this.handleChange,
+								tabIndex: "1" })
 						)
 					),
 					_react2.default.createElement(
@@ -11986,7 +12027,8 @@ var StepOne = function (_React$Component) {
 								value: this.state.lastName,
 								placeholder: "Doe",
 								id: "lastName",
-								onChange: this.handleChange })
+								onChange: this.handleChange,
+								tabIndex: "2" })
 						)
 					),
 					_react2.default.createElement(
@@ -12004,7 +12046,8 @@ var StepOne = function (_React$Component) {
 								value: this.state.birthCity,
 								placeholder: "City Name",
 								id: "birthCity",
-								onChange: this.handleChange })
+								onChange: this.handleChange,
+								tabIndex: "3" })
 						)
 					),
 					_react2.default.createElement(
@@ -12012,7 +12055,12 @@ var StepOne = function (_React$Component) {
 						{ className: "form-box form-box-full" },
 						_react2.default.createElement(
 							"div",
-							{ className: "checkbox", onClick: this.toggleConsentGiven },
+							{ id: "consentCheckbox",
+								className: "checkbox",
+								onClick: this.toggleConsentGiven,
+								onFocus: this.updateFocused,
+								onBlur: this.resetFocused,
+								tabIndex: "4" },
 							consentFilledIn
 						),
 						_react2.default.createElement(
