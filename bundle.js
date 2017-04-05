@@ -11603,7 +11603,7 @@ var ParticipationSteps = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (ParticipationSteps.__proto__ || Object.getPrototypeOf(ParticipationSteps)).call(this));
 
 		_this.state = {
-			currentStep: 1,
+			currentStep: 2,
 			percentComplete: 35,
 			providersAndOrganizations: [{
 				"first_name": "John",
@@ -11788,6 +11788,12 @@ var ProgressBar = function (_React$Component) {
 			var widthFromPercentComplete = percentComplete * 300 / 100;
 
 			//could not tell from mockup the distance between each of the 4 segments dividing the completion bar
+			//left as variables to be able to pass in value
+			var dividerOne = "25px",
+			    dividerTwo = "100px",
+			    dividerThree = "170px",
+			    dividerFour = "280px";
+
 			return _react2.default.createElement(
 				"div",
 				{ className: "footer-box center" },
@@ -11800,10 +11806,10 @@ var ProgressBar = function (_React$Component) {
 				_react2.default.createElement(
 					"div",
 					{ id: "progressBar", className: "center-block" },
-					_react2.default.createElement("div", null),
-					_react2.default.createElement("div", null),
-					_react2.default.createElement("div", null),
-					_react2.default.createElement("div", null),
+					_react2.default.createElement("div", { className: "divider", style: { left: dividerOne } }),
+					_react2.default.createElement("div", { className: "divider", style: { left: dividerTwo } }),
+					_react2.default.createElement("div", { className: "divider", style: { left: dividerThree } }),
+					_react2.default.createElement("div", { className: "divider", style: { left: dividerFour } }),
 					_react2.default.createElement("div", { className: "inner-bar", style: { width: widthFromPercentComplete } })
 				)
 			);
@@ -11897,7 +11903,7 @@ var StepOne = function (_React$Component) {
 				return false;
 			}
 			//First Name, Last Name, and City must be filled out (letters only)
-			if (/^[A-Za-z ]+$/.test(this.state.firstName) && /^[A-Za-z ]+$/.test(this.state.lastName && /^[A-Za-z ]+$/.test(this.state.birthCity))) {
+			if (/^[A-Za-z ]+$/.test(this.state.firstName) && /^[A-Za-z ]+$/.test(this.state.lastName) && /^[A-Za-z ]+$/.test(this.state.birthCity)) {
 				return true;
 			}
 			return false;

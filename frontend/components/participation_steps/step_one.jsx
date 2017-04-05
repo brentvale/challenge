@@ -46,7 +46,7 @@ class StepOne extends React.Component{
 			return false;
 		}
 		//First Name, Last Name, and City must be filled out (letters only)
-		if(/^[A-Za-z ]+$/.test(this.state.firstName) && /^[A-Za-z ]+$/.test(this.state.lastName && /^[A-Za-z ]+$/.test(this.state.birthCity))){
+		if(/^[A-Za-z ]+$/.test(this.state.firstName) && /^[A-Za-z ]+$/.test(this.state.lastName) && /^[A-Za-z ]+$/.test(this.state.birthCity)){
 			return true;
 		}
 		return false;
