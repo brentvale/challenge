@@ -299,13 +299,13 @@ body.is-mobile p.submit-button, body.is-mobile p.checkbox-info{
 	font-size: 1.4em;
 }
 body.is-mobile .footer-box.left{
-	top: 1400px;
+	top: 1600px;
 }
 body.is-mobile .footer-box.right{
-	top:1390px;
+	top:1590px;
 }
 body.is-mobile .footer-box.center{
-	top: 1300px;
+	top: 1500px;
 }
 
 /*MEDIA QUERIES*/
