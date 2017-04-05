@@ -273,7 +273,11 @@ a{
 
 /*MOBILE*/
 body.is-mobile{
-	font-size:80%;
+	font-size:100%;
+}
+body.is-mobile input{
+/*	greater than 16 prevents auto focus*/
+	font-size:26px;
 }
 body.is-mobile .form-box-half{
 	width:100%;
@@ -295,13 +299,13 @@ body.is-mobile p.submit-button, body.is-mobile p.checkbox-info{
 	font-size: 1.4em;
 }
 body.is-mobile .footer-box.left{
-	top: 1200px;
+	top: 1400px;
 }
 body.is-mobile .footer-box.right{
-	top:1190px;
+	top:1390px;
 }
 body.is-mobile .footer-box.center{
-	top: 1100px;
+	top: 1300px;
 }
 
 /*MEDIA QUERIES*/
