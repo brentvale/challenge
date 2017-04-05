@@ -12074,13 +12074,13 @@ var StepOne = function (_React$Component) {
 						{ className: "form-box form-box-full", style: { marginTop: "0px" } },
 						_react2.default.createElement(
 							"div",
-							{ className: "button back-button hand-on-hover", onClick: this.alertNavigatingBack },
-							_react2.default.createElement("i", { className: "fa fa-chevron-left", "aria-hidden": "true" })
+							{ className: "next-button-container" },
+							submitButton
 						),
 						_react2.default.createElement(
 							"div",
-							{ className: "next-button-container" },
-							submitButton
+							{ className: "button back-button hand-on-hover", onClick: this.alertNavigatingBack },
+							_react2.default.createElement("i", { className: "fa fa-chevron-left", "aria-hidden": "true" })
 						)
 					)
 				)

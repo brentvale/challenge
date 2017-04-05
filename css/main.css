@@ -113,6 +113,7 @@ label > span {
 }
 .next-button-container{
 	float:right;
+	margin-bottom: 0;
 	width:86%;
 }
 .next-button{
@@ -152,6 +153,7 @@ label > span {
 }
 .form-box-half.first{
 	padding-right:2%;
+	margin-bottom:0;
 }
 .form-box-half.second{
 	padding-left:2%;
@@ -269,3 +271,33 @@ a{
 	margin:2px;
 }
 
+@media only screen and (max-width: 699px) {
+	.form-box-half{
+		width:100%;
+	}
+	.form-box-half.first{
+		padding-right:0;
+		margin-bottom:1em;
+	}
+	.form-box-half.second{
+		padding-left:0;
+	}
+	.form-container{
+		width: 100%;
+	}
+}
+@media only screen and (max-width: 500px) {
+	.next-button-container{
+		margin-bottom: 1em;
+		width:100%;
+	}
+	.footer-box.left{
+		top: 900px;
+	}
+	.footer-box.right{
+		top:890px;
+	}
+	.footer-box.center{
+		top: 800px;
+	}
+}

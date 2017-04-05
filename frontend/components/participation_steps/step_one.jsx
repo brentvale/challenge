@@ -167,11 +167,11 @@ class StepOne extends React.Component{
 					</div>
 					
 					<div className="form-box form-box-full" style={{marginTop: "0px"}}>
-						<div className="button back-button hand-on-hover" onClick={this.alertNavigatingBack}>
-							<i className="fa fa-chevron-left" aria-hidden="true"></i>
-						</div>
 						<div className="next-button-container">
 							{submitButton}
+						</div>
+						<div className="button back-button hand-on-hover" onClick={this.alertNavigatingBack}>
+							<i className="fa fa-chevron-left" aria-hidden="true"></i>
 						</div>
 					</div>
 				</form>
