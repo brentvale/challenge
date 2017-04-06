@@ -366,7 +366,7 @@ body.is-mobile .pagination-container{
 }
 body.is-mobile ul.pagination-list{
 	padding: 2em 0em 0em 0em;
-	width:80%;
+	width:100%;
 }
 body.is-mobile ul.pagination-list li{
 	font-size:1.8em;

@@ -10,7 +10,7 @@ class ParticipationSteps extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			currentStep: 2,
+			currentStep: 1,
 			percentComplete: 35,
 		};
 		this.currentStepFromState = this.currentStepFromState.bind(this);
