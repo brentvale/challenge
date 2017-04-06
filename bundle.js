@@ -11663,7 +11663,7 @@ var ParticipationSteps = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (ParticipationSteps.__proto__ || Object.getPrototypeOf(ParticipationSteps)).call(this));
 
 		_this.state = {
-			currentStep: 1,
+			currentStep: 2,
 			percentComplete: 35
 		};
 		_this.currentStepFromState = _this.currentStepFromState.bind(_this);

@@ -361,6 +361,24 @@ body.is-mobile .footer-box.center{
 body.is-mobile .checkbox{
 	border: 1px solid var(--dark-gray);
 }
+body.is-mobile .pagination-container{
+	height:10em;
+}
+body.is-mobile ul.pagination-list{
+	padding: 2em 0em 0em 0em;
+	width:80%;
+}
+body.is-mobile ul.pagination-list li{
+	font-size:1.8em;
+	line-height:2.0em;
+	margin: 0.2em;
+	height:2.0em;
+	width: 2.0em;
+}
+body.is-mobile .paginate-nav{
+	font-size:2em;
+	margin: 1em;
+}
 
 /*MEDIA QUERIES*/
 @media only screen and (max-width: 699px) {
