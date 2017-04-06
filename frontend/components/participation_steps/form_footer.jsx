@@ -16,7 +16,7 @@ class FormFooter extends React.Component{
 				{	progressBarDisplay }			
 	
 				<div className="footer-box right">
-					<img src="/images/evidation_logo_download.png" 
+					<img src="./images/evidation_logo_download.png" 
 							 alt="Evidation Company Logo"/>
 				</div>
 		  </div>

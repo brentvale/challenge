@@ -52,11 +52,9 @@ class ParticipationSteps extends React.Component{
 			<FormFooter alertContactUs={this.alertContactUs} percentComplete={this.state.percentComplete}/> :
 			<FormFooter alertContactUs={this.alertContactUs} percentComplete={null}/> ;
 		return(
-			<div style={{minHeight:"900px"}}>
+			<div>
 				<FormHeading/>
-			
 				{currentStep}
-				
 				{footerDisplay}
 			</div>
 		)

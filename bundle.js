@@ -11448,7 +11448,7 @@ var FormFooter = function (_React$Component) {
 				_react2.default.createElement(
 					'div',
 					{ className: 'footer-box right' },
-					_react2.default.createElement('img', { src: '/images/evidation_logo_download.png',
+					_react2.default.createElement('img', { src: './images/evidation_logo_download.png',
 						alt: 'Evidation Company Logo' })
 				)
 			);
@@ -11713,7 +11713,7 @@ var ParticipationSteps = function (_React$Component) {
 			var footerDisplay = this.state.currentStep === 2 ? _react2.default.createElement(_form_footer2.default, { alertContactUs: this.alertContactUs, percentComplete: this.state.percentComplete }) : _react2.default.createElement(_form_footer2.default, { alertContactUs: this.alertContactUs, percentComplete: null });
 			return _react2.default.createElement(
 				'div',
-				{ style: { minHeight: "900px" } },
+				null,
 				_react2.default.createElement(_form_heading2.default, null),
 				currentStep,
 				footerDisplay
