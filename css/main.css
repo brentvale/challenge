@@ -41,13 +41,15 @@ p{
 	line-height:1.5em;
 	margin-bottom:1.5em;
 }
-textarea:focus, input:focus, #consentCheckbox:focus{
+textarea:focus, input:focus{
 	outline: none;
 }
 .bubble-container{
 	display:inline-block;
 	height:100%;
-	width:3em;
+	padding-left:1em;
+	text-align:center;
+	width:4em;
 }
 .center-block{
 	left: 0;
@@ -65,22 +67,24 @@ textarea:focus, input:focus, #consentCheckbox:focus{
 .list-item-display{
 	display:inline-block;
 	font-size:1.3em;
+	max-width:100%;
 	vertical-align:top;
 }
 .list-item-display h4{
+	font-size:1.2em;
 	font-weight:400;
-	margin-top:0.7em;
+	margin-top:1em;
 	margin-bottom: 0em;
 }
 .list-item-display p{
 	color: var(--medium-gray);
-	font-size: 0.9em;
+	font-size: 1em;
 	margin-top:0.3em;
 }
 .search-result{
 	border: 1px solid var(--border-gray);
 	border-radius: var(--standard-border-radius);
-	height:6em;
+	height:7.8em;
 	margin-top:1em;
 	margin-bottom: 1em;
 	width:100%;
@@ -218,16 +222,54 @@ p.submit-button.validated{
 	color: black;
 }
 
+/*PAGINATION*/
+.pagination-container{
+	height:5em;
+	position:relative;
+	text-align:center;
+	width: 100%;
+}
+ul.pagination-list{
+	display:inline-block;
+	list-style-type:none;
+	margin: 0;
+	padding: 1em 0em 0em 0em;
+	width: 100%;
+}
+ul.pagination-list li{
+	border: 1px solid var(--medium-gray);
+	border-radius: 2px;
+	color: var(--medium-gray);
+	display:inline-block;
+	font-size:1.3em;
+	line-height:1.8em;
+	margin: 0.2em;
+	height:1.8em;
+	width: 1.8em;
+}
+ul.pagination-list li.active{
+	background-color: var(--light-gray-background);
+	color: var(--dark-gray);
+}
+.paginate-nav{
+	display:inline-block;
+	color: var(--border-gray);
+	margin: 0.5em;
+}
+.paginate-nav.active{
+	color: var(--medium-gray);
+}
+
 /*FOOTER*/
 .footer-box{
 	margin:3em;
 	position:absolute;
 }
 .footer-box.left, .footer-box.right{
-	top: 800px;
+	top: 100em;
 }
 .footer-box.center{
-	top: 750px;
+	top: 95em;
 }
 .footer-box.left{
 	left: 0;
@@ -335,19 +377,22 @@ body.is-mobile .checkbox{
 	.form-container{
 		width: 100%;
 	}
+	.footer-box.left{
+		top: 100em;
+	}
+	.footer-box.right{
+		top: 99em;
+	}
+	.footer-box.center{
+		top: 90em;
+	}
 }
 @media only screen and (max-width: 500px) {
 	.next-button-container{
 		margin-bottom: 1em;
 		width:100%;
 	}
-	.footer-box.left{
-		top: 900px;
-	}
-	.footer-box.right{
-		top:890px;
-	}
-	.footer-box.center{
-		top: 800px;
+	.list-item-display{
+		max-width:80%;
 	}
 }

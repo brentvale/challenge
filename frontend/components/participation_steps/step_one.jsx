@@ -53,9 +53,22 @@ class StepOne extends React.Component{
 	}
 	
 	handleSubmitForm(){
-		console.log({first_name: this.state.firstName,
-								 last_name: this.state.lastName,
-								 birth_city: this.state.birthCity})
+		console.log(` 
+			$.ajax({
+				method: 'POST',
+				url:  '/api/users',
+				data: {
+					users: {
+						first_name: ${this.state.firstName}
+						last_name:  ${this.state.lastName}
+						birth_city: ${this.state.birthCity}
+					}
+				},
+				success: function(resp){
+				},
+				error: function(resp){
+				}
+			})` );
 		this.props.updateCurrentStep(2);
 	}
 	
@@ -94,9 +107,8 @@ class StepOne extends React.Component{
 			this.setState({focusTarget: "submitButton"});
 			break;
 		}
-		
 	}
-	
+
 	render(){
 		let isValid = this.formIsValid();
 		let submitButton;

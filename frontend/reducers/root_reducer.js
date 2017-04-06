@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import providersReducer from './providers_reducer';
-import organizationsReducer from './organizations_reducer';
+import providersAndOrganizationsReducer from './providers_and_organizations_reducer';
+import filtersReducer from './filters_reducer';
 
 const RootReducer = combineReducers({
-  organizations: organizationsReducer,
-  providers: providersReducer
+  providersAndOrganizations: providersAndOrganizationsReducer,
+	filters: filtersReducer
 });
 
 export default RootReducer;

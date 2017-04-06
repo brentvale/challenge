@@ -11510,43 +11510,103 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(7);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var ListItem = function ListItem(_ref) {
-	var result = _ref.result;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	var orgOrPersonDisplay = result.first_name ? _react2.default.createElement(
-		"h4",
-		null,
-		result.first_name,
-		" ",
-		result.last_name
-	) : _react2.default.createElement(
-		"h4",
-		null,
-		result.organization_name
-	);
-	return _react2.default.createElement(
-		"div",
-		{ className: "search-result" },
-		_react2.default.createElement("div", { className: "bubble-container" }),
-		_react2.default.createElement(
-			"div",
-			{ className: "list-item-display" },
-			orgOrPersonDisplay,
-			_react2.default.createElement(
-				"p",
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var handleSelectProvider = function handleSelectProvider(thing) {};
+
+var ListItem = function (_React$Component) {
+	_inherits(ListItem, _React$Component);
+
+	function ListItem() {
+		_classCallCheck(this, ListItem);
+
+		var _this = _possibleConstructorReturn(this, (ListItem.__proto__ || Object.getPrototypeOf(ListItem)).call(this));
+
+		_this.handleSelectProvider = _this.handleSelectProvider.bind(_this);
+		return _this;
+	}
+
+	_createClass(ListItem, [{
+		key: 'handleSelectProvider',
+		value: function handleSelectProvider() {
+			if (this.props.result[0].organization_name) {
+				console.log('\n\t\t\t\t\t\t\t\t\t organization_name: ' + this.props.result[0].organization_name + '\n\t\t\t\t\t\t\t\t\t zip:               ' + this.props.result[0].zip + '\n\t\t\t\t\t\t\t\t\t npi:               ' + this.props.result[0].npi);
+			} else {
+				this.props.result.forEach(function (obj) {
+					return console.log('\n\t\t\t\t\t\t\t\t\t\t first_name: ' + obj.first_name + '\n\t\t\t\t\t\t\t\t\t\t last_name:  ' + obj.last_name + '\n\t\t\t\t\t\t\t\t\t\t zip:        ' + obj.zip + '\n\t\t\t\t\t\t\t\t\t\t npi:        ' + obj.npi);
+				});
+			}
+			alert('Result logged to console');
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var result = this.props.result;
+
+			var orgOrPersonDisplay = result[0].first_name ? _react2.default.createElement(
+				'h4',
 				null,
-				"We found [X] providers practicing at [Y] locations"
-			)
-		)
-	);
-};
+				result[0].first_name,
+				' ',
+				result[0].last_name
+			) : _react2.default.createElement(
+				'h4',
+				null,
+				result[0].organization_name
+			);
+			//unable to determine from data what indicates doctor practicing at more than one location
+			//from mockup: We found [10] Dan Lee's practicing nearby at [27] locations
+			//assumption (for now): doctor practices at one location
+			var infoText = result[0].first_name ? 'We found ' + result.length + ' providers practicing at ' + result.length + ' locations' : 'We found this hospital provider near you.';
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'search-result hand-on-hover', style: { position: "relative" }, onClick: this.handleSelectProvider },
+				_react2.default.createElement(
+					'div',
+					{ className: 'bubble-container' },
+					_react2.default.createElement('i', { className: 'fa fa-circle-thin',
+						'aria-hidden': 'true',
+						style: { fontSize: "2em", color: "#c1c0c9", fontWeight: "800", paddingTop: "0.7em" } })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'list-item-display' },
+					orgOrPersonDisplay,
+					_react2.default.createElement(
+						'p',
+						null,
+						infoText
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: { position: "absolute", right: "0", top: "40%" } },
+					_react2.default.createElement('i', { className: 'fa fa-chevron-right',
+						'aria-hidden': 'true',
+						style: { color: "#c1c0c9",
+							paddingRight: "15px" } })
+				)
+			);
+		}
+	}]);
+
+	return ListItem;
+}(_react2.default.Component);
+
+;
 
 exports.default = ListItem;
 
@@ -11579,9 +11639,9 @@ var _step_one = __webpack_require__(134);
 
 var _step_one2 = _interopRequireDefault(_step_one);
 
-var _step_two = __webpack_require__(135);
+var _filter_table_container = __webpack_require__(329);
 
-var _step_two2 = _interopRequireDefault(_step_two);
+var _filter_table_container2 = _interopRequireDefault(_filter_table_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11604,50 +11664,7 @@ var ParticipationSteps = function (_React$Component) {
 
 		_this.state = {
 			currentStep: 1,
-			percentComplete: 35,
-			providersAndOrganizations: [{
-				"first_name": "John",
-				"last_name": "Doe",
-				"zip": "01234",
-				"npi": 12345
-			}, {
-				"first_name": "Jane",
-				"last_name": "Doe",
-				"zip": "93110",
-				"npi": 23456
-			}, {
-				"first_name": "Bran",
-				"last_name": "Doe",
-				"zip": "93110",
-				"npi": 54321
-			}, {
-				"first_name": "Jack",
-				"last_name": "Dob",
-				"zip": "94101",
-				"npi": 35467
-			}, {
-				"first_name": "John",
-				"last_name": "Doe",
-				"zip": "54312",
-				"npi": 99999
-			}, {
-				"first_name": "Jack",
-				"last_name": "Dob",
-				"zip": "11002",
-				"npi": 23556
-			}, {
-				"organization_name": "Johns Hopkins",
-				"zip": "01234",
-				"npi": 22222
-			}, {
-				"organization_name": "Mercy Hospital",
-				"zip": "93110",
-				"npi": 33333
-			}, {
-				"organization_name": "General Hospital",
-				"zip": "11002",
-				"npi": 44533
-			}]
+			percentComplete: 35
 		};
 		_this.currentStepFromState = _this.currentStepFromState.bind(_this);
 		_this.alertContactUs = _this.alertContactUs.bind(_this);
@@ -11663,8 +11680,7 @@ var ParticipationSteps = function (_React$Component) {
 					return _react2.default.createElement(_step_one2.default, { updateCurrentStep: this.updateCurrentStep });
 					break;
 				case 2:
-					return _react2.default.createElement(_step_two2.default, { updateCurrentStep: this.updateCurrentStep,
-						providersAndOrganizations: this.state.providersAndOrganizations });
+					return _react2.default.createElement(_filter_table_container2.default, { updateCurrentStep: this.updateCurrentStep });
 					break;
 			}
 		}
@@ -11907,9 +11923,7 @@ var StepOne = function (_React$Component) {
 	}, {
 		key: "handleSubmitForm",
 		value: function handleSubmitForm() {
-			console.log({ first_name: this.state.firstName,
-				last_name: this.state.lastName,
-				birth_city: this.state.birthCity });
+			console.log(" \n\t\t\t$.ajax({\n\t\t\t\tmethod: 'POST',\n\t\t\t\turl:  '/api/users',\n\t\t\t\tdata: {\n\t\t\t\t\tusers: {\n\t\t\t\t\t\tfirst_name: " + this.state.firstName + "\n\t\t\t\t\t\tlast_name:  " + this.state.lastName + "\n\t\t\t\t\t\tbirth_city: " + this.state.birthCity + "\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\tsuccess: function(resp){\n\t\t\t\t},\n\t\t\t\terror: function(resp){\n\t\t\t\t}\n\t\t\t})");
 			this.props.updateCurrentStep(2);
 		}
 	}, {
@@ -12129,6 +12143,18 @@ var _list_item = __webpack_require__(130);
 
 var _list_item2 = _interopRequireDefault(_list_item);
 
+var _filter_table_container = __webpack_require__(329);
+
+var _filter_table_container2 = _interopRequireDefault(_filter_table_container);
+
+var _search = __webpack_require__(330);
+
+var _search2 = _interopRequireDefault(_search);
+
+var _pagination_display = __webpack_require__(333);
+
+var _pagination_display2 = _interopRequireDefault(_pagination_display);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -12149,54 +12175,94 @@ var StepTwo = function (_React$Component) {
 		var _this = _possibleConstructorReturn(this, (StepTwo.__proto__ || Object.getPrototypeOf(StepTwo)).call(this));
 
 		_this.state = {
-			searchQuery: ""
+			fetching: false,
+			currentPageOfResults: 1
 		};
-		_this.handleChange = _this.handleChange.bind(_this);
-		_this.filterSearchResults = _this.filterSearchResults.bind(_this);
+		_this.handleQueryStringChange = _this.handleQueryStringChange.bind(_this);
+		_this.goToPage = _this.goToPage.bind(_this);
 		return _this;
 	}
 
 	_createClass(StepTwo, [{
-		key: 'handleChange',
-		value: function handleChange(e) {
-			this.setState({ searchQuery: $(e.currentTarget).val() });
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps() {
+			//used to confirm loading providers requirement
+			// var that = this;
+			// 		setTimeout(function(){
+			// 			that.setState({fetching:false});
+			// 		}, 10000)
+			this.setState({ fetching: false });
 		}
 	}, {
-		key: 'filterSearchResults',
-		value: function filterSearchResults() {
-			var re = new RegExp(this.state.searchQuery, "i");
-			var stringLength = this.state.searchQuery.length;
-
-			//with current list of elements to search through, element either has first_name or not
-			var filteredArray = this.props.providersAndOrganizations.filter(function (obj) {
-				if (obj.first_name) {
-					if (obj.first_name.slice(0, stringLength).match(re) || obj.last_name.slice(0, stringLength).match(re) || (obj.first_name + " " + obj.last_name).slice(0, stringLength).match(re)) {
-						return obj;
-					}
-				} else {
-					if (obj.organization_name.slice(0, stringLength).match(re)) {
-						return obj;
-					}
-				}
-			});
-
-			return filteredArray;
+		key: 'goToPage',
+		value: function goToPage(e) {
+			var pageNum = $(e.currentTarget).data("page-number");
+			switch (pageNum) {
+				case "back":
+					this.setState({ currentPageOfResults: this.state.currentPageOfResults - 1 });
+					break;
+				case "forward":
+					this.setState({ currentPageOfResults: this.state.currentPageOfResults + 1 });
+					break;
+				default:
+					this.setState({ currentPageOfResults: pageNum });
+					break;
+			}
+		}
+	}, {
+		key: 'handleQueryStringChange',
+		value: function handleQueryStringChange(e) {
+			this.props.updateFilter($(e.currentTarget).val());
+			this.setState({ fetching: true });
 		}
 	}, {
 		key: 'render',
 		value: function render() {
 			var placeholderText = "Search for a doctor, physician, or organization by name";
-			var filteredResults;
-			if (this.state.searchQuery === "") {
-				filteredResults = [];
+			var _props = this.props,
+			    searchQuery = _props.searchQuery,
+			    providersAndOrganizations = _props.providersAndOrganizations,
+			    updateFilter = _props.updateFilter;
+
+
+			var totalPages = Object.keys(providersAndOrganizations).length;
+			var paginationDisplay = void 0;
+			if (totalPages > 1) {
+				paginationDisplay = _react2.default.createElement(_pagination_display2.default, { totalPages: totalPages,
+					goToPage: this.goToPage,
+					currentPageOfResults: this.state.currentPageOfResults });
 			} else {
-				filteredResults = this.filterSearchResults();
+				paginationDisplay = "";
 			}
 
-			var filteredResultsDisplay = filteredResults.map(function (result, idx) {
+			var filteredResultsDisplay = providersAndOrganizations[this.state.currentPageOfResults].map(function (result, idx) {
 				return _react2.default.createElement(_list_item2.default, { key: idx, result: result });
 			});
 
+			var displayBlock = void 0;
+			if (this.state.fetching) {
+				displayBlock = _react2.default.createElement(
+					'div',
+					{ style: { position: "relative" } },
+					_react2.default.createElement(
+						'div',
+						{ style: { position: "absolute", height: "100%", width: "100%", backgroundColor: "rgba(255,255,255,0.85)", zIndex: "3" } },
+						_react2.default.createElement(
+							'p',
+							{ style: { textAlign: "center", paddingTop: "20%" } },
+							'Loading Providers...'
+						)
+					),
+					filteredResultsDisplay
+				);
+			} else {
+				displayBlock = _react2.default.createElement(
+					'div',
+					null,
+					filteredResultsDisplay,
+					paginationDisplay
+				);
+			}
 			return _react2.default.createElement(
 				'div',
 				{ className: 'form-container center-block' },
@@ -12211,14 +12277,13 @@ var StepTwo = function (_React$Component) {
 					_react2.default.createElement(
 						'div',
 						{ className: 'form-box form-box-full' },
-						_react2.default.createElement('input', { id: 'searchQuery',
-							type: 'text',
-							value: this.state.searchQuery,
-							placeholder: placeholderText,
-							onChange: this.handleChange })
+						_react2.default.createElement(_search2.default, { searchQuery: searchQuery,
+							updateFilter: updateFilter,
+							placeholderText: placeholderText,
+							handleQueryStringChange: this.handleQueryStringChange })
 					)
 				),
-				filteredResultsDisplay
+				displayBlock
 			);
 		}
 	}]);
@@ -12231,72 +12296,8 @@ var StepTwo = function (_React$Component) {
 exports.default = StepTwo;
 
 /***/ }),
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _merge = __webpack_require__(90);
-
-var _merge2 = _interopRequireDefault(_merge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var organizationsReducer = function organizationsReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments[1];
-
-  var nextState = void 0;
-  Object.freeze(state);
-
-  switch (action.type) {
-
-    default:
-      return state;
-  }
-};
-
-exports.default = organizationsReducer;
-
-/***/ }),
-/* 137 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _merge = __webpack_require__(90);
-
-var _merge2 = _interopRequireDefault(_merge);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var providersReducer = function providersReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments[1];
-
-  var nextState = void 0;
-  Object.freeze(state);
-
-  switch (action.type) {
-
-    default:
-      return state;
-  }
-};
-
-exports.default = providersReducer;
-
-/***/ }),
+/* 136 */,
+/* 137 */,
 /* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12309,19 +12310,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(69);
 
-var _providers_reducer = __webpack_require__(137);
+var _providers_and_organizations_reducer = __webpack_require__(332);
 
-var _providers_reducer2 = _interopRequireDefault(_providers_reducer);
+var _providers_and_organizations_reducer2 = _interopRequireDefault(_providers_and_organizations_reducer);
 
-var _organizations_reducer = __webpack_require__(136);
+var _filters_reducer = __webpack_require__(327);
 
-var _organizations_reducer2 = _interopRequireDefault(_organizations_reducer);
+var _filters_reducer2 = _interopRequireDefault(_filters_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var RootReducer = (0, _redux.combineReducers)({
-  organizations: _organizations_reducer2.default,
-  providers: _providers_reducer2.default
+  providersAndOrganizations: _providers_and_organizations_reducer2.default,
+  filters: _filters_reducer2.default
 });
 
 exports.default = RootReducer;
@@ -27902,6 +27903,624 @@ function symbolObservablePonyfill(root) {
 
 	return result;
 };
+
+/***/ }),
+/* 326 */,
+/* 327 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _filter_actions = __webpack_require__(328);
+
+var _merge = __webpack_require__(90);
+
+var _merge2 = _interopRequireDefault(_merge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _defaultFilters = Object.freeze({
+  searchQuery: ""
+});
+
+var FiltersReducer = function FiltersReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _defaultFilters;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  if (action.type === _filter_actions.UPDATE_FILTER) {
+    var newFilter = {
+      searchQuery: action.value
+    };
+    return (0, _merge2.default)({}, state, newFilter);
+  } else {
+    return state;
+  }
+};
+
+exports.default = FiltersReducer;
+
+/***/ }),
+/* 328 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var UPDATE_FILTER = exports.UPDATE_FILTER = "UPDATE_FILTER";
+
+var updateFilter = exports.updateFilter = function updateFilter(value) {
+  return {
+    type: UPDATE_FILTER,
+    value: value
+  };
+};
+
+/***/ }),
+/* 329 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _reactRedux = __webpack_require__(114);
+
+var _filter_actions = __webpack_require__(328);
+
+var _selectors = __webpack_require__(331);
+
+var _step_two = __webpack_require__(135);
+
+var _step_two2 = _interopRequireDefault(_step_two);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    providersAndOrganizations: (0, _selectors.asFilteredArray)(state),
+    searchQuery: state.filters.searchQuery
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    updateFilter: function updateFilter(value) {
+      return dispatch((0, _filter_actions.updateFilter)(value));
+    }
+  };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_step_two2.default);
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+		value: true
+});
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Search = function Search(_ref) {
+		var queryString = _ref.queryString,
+		    placeholderText = _ref.placeholderText,
+		    handleQueryStringChange = _ref.handleQueryStringChange;
+		return _react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement("input", {
+						type: "text",
+						value: queryString,
+						onChange: handleQueryStringChange,
+						placeholder: placeholderText }),
+				_react2.default.createElement("br", null)
+		);
+};
+
+exports.default = Search;
+
+/***/ }),
+/* 331 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var asFilteredArray = exports.asFilteredArray = function asFilteredArray(_ref) {
+	var providersAndOrganizations = _ref.providersAndOrganizations,
+	    filters = _ref.filters;
+
+	if (filters.searchQuery === "") {
+		return { 1: [] };
+	}
+	var re = new RegExp(filters.searchQuery, "i");
+	var stringLength = filters.searchQuery.length;
+
+	//with current list of elements to search through, element either has first_name or not
+	//N
+	var filteredArray = providersAndOrganizations.filter(function (obj) {
+		if (obj.first_name) {
+			if (obj.first_name.slice(0, stringLength).match(re) || obj.last_name.slice(0, stringLength).match(re) || (obj.first_name + " " + obj.last_name).slice(0, stringLength).match(re)) {
+				return obj;
+			}
+		} else {
+			if (obj.organization_name.slice(0, stringLength).match(re)) {
+				return obj;
+			}
+		}
+	});
+	//combine multiple records 
+	//N (total 2N)
+	var combinedNamesHash = {};
+	for (var i = 0; i < filteredArray.length; i++) {
+		var combinedName = void 0;
+		if (typeof filteredArray[i].first_name === "undefined") {
+			combinedName = "" + filteredArray[i].organization_name;
+		} else {
+			combinedName = filteredArray[i].first_name + " " + filteredArray[i].last_name;
+		}
+		if (!combinedNamesHash[combinedName]) {
+			combinedNamesHash[combinedName] = [];
+		}
+		combinedNamesHash[combinedName].push(filteredArray[i]);
+	}
+
+	//5 results per page
+	//N (total 3N Runtime)
+	var filteredHashByFives = { 1: [] };
+	var currentPage = 1;
+	var counter = 0;
+	for (var _i in combinedNamesHash) {
+		if (counter !== 0 && counter % 5 === 0) {
+			filteredHashByFives[counter / 5 + 1] = [];
+			currentPage += 1;
+		}
+		filteredHashByFives[currentPage].push(combinedNamesHash[_i]);
+
+		counter += 1;
+	}
+	return filteredHashByFives;
+};
+
+/***/ }),
+/* 332 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+		value: true
+});
+
+var _merge = __webpack_require__(90);
+
+var _merge2 = _interopRequireDefault(_merge);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _defaultState = Object.freeze([{
+		"first_name": "John",
+		"last_name": "Doe",
+		"zip": "01234",
+		"npi": 12345
+}, {
+		"first_name": "Jane",
+		"last_name": "Doe",
+		"zip": "93110",
+		"npi": 23456
+}, {
+		"first_name": "Bran",
+		"last_name": "Doe",
+		"zip": "93110",
+		"npi": 54321
+}, {
+		"first_name": "Jack",
+		"last_name": "Dob",
+		"zip": "94101",
+		"npi": 35467
+}, {
+		"first_name": "John",
+		"last_name": "Doe",
+		"zip": "54312",
+		"npi": 99999
+}, {
+		"first_name": "Jack",
+		"last_name": "Dob",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"organization_name": "Johns Hopkins",
+		"zip": "01234",
+		"npi": 22222
+}, {
+		"organization_name": "Mercy Hospital",
+		"zip": "93110",
+		"npi": 33333
+}, {
+		"organization_name": "General Hospital",
+		"zip": "11002",
+		"npi": 44533
+}, {
+		"first_name": "John",
+		"last_name": "Doe",
+		"zip": "91011",
+		"npi": 34567
+}, {
+		"first_name": "Janathan",
+		"last_name": "Doe",
+		"zip": "93110",
+		"npi": 23456
+}, {
+		"first_name": "Brant",
+		"last_name": "Doe",
+		"zip": "93110",
+		"npi": 54321
+}, {
+		"first_name": "Jackery",
+		"last_name": "Dob",
+		"zip": "94101",
+		"npi": 35467
+}, {
+		"first_name": "Brent",
+		"last_name": "Doe",
+		"zip": "54312",
+		"npi": 99999
+}, {
+		"first_name": "Jack",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"organization_name": "Johns Hopkins Hospital",
+		"zip": "01234",
+		"npi": 22222
+}, {
+		"organization_name": "Mercy Hospital Redwood City",
+		"zip": "93110",
+		"npi": 33333
+}, {
+		"organization_name": "General Hospital Near Somewhere",
+		"zip": "11002",
+		"npi": 44533
+}, {
+		"first_name": "Jobe",
+		"last_name": "Something",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohnathanG",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohanT",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JustIT",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohncyW",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohnathanT",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Jona",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Junt",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Jobhncy",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Johnothan Thompson",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Jihan",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Jast",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Johncy",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Johathan Thompson",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Joan",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Jut",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "Johncie",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JobeTwo",
+		"last_name": "Something",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohnathanGTwo",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohanTTwo",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JustITTwo",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohncyWTwo",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohnathanTTwo",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JonaTwo",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JuntTwo",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JobhncyTwo",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohnothTwo",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JihanTwo",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JastTwo",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohncyTwo",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohathanTwo",
+		"last_name": "Dobbler",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JoanTwo",
+		"last_name": "Odfjell",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JutTwo",
+		"last_name": "AnotherName",
+		"zip": "11002",
+		"npi": 23556
+}, {
+		"first_name": "JohncieTwo",
+		"last_name": "Phillips",
+		"zip": "11002",
+		"npi": 23556
+}]);
+
+var providersReducer = function providersReducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _defaultState;
+		var action = arguments[1];
+
+		var nextState = void 0;
+		Object.freeze(state);
+
+		switch (action.type) {
+
+				default:
+						return state;
+		}
+};
+
+exports.default = providersReducer;
+
+/***/ }),
+/* 333 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _page_number_button = __webpack_require__(334);
+
+var _page_number_button2 = _interopRequireDefault(_page_number_button);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var PaginationDisplay = function (_React$Component) {
+	_inherits(PaginationDisplay, _React$Component);
+
+	function PaginationDisplay() {
+		_classCallCheck(this, PaginationDisplay);
+
+		return _possibleConstructorReturn(this, (PaginationDisplay.__proto__ || Object.getPrototypeOf(PaginationDisplay)).apply(this, arguments));
+	}
+
+	_createClass(PaginationDisplay, [{
+		key: 'render',
+		value: function render() {
+			var _props = this.props,
+			    totalPages = _props.totalPages,
+			    currentPageOfResults = _props.currentPageOfResults,
+			    goToPage = _props.goToPage;
+
+			var pageNumbersArray = [];
+			for (var i = 0; i < totalPages; i++) {
+				pageNumbersArray.push(i + 1);
+			}
+
+			var pageNumbersDisplay = pageNumbersArray.map(function (pageNumber, idx) {
+				return _react2.default.createElement(_page_number_button2.default, { key: idx, pageNumber: pageNumber, goToPage: goToPage, currentPageOfResults: currentPageOfResults });
+			});
+
+			var leftNavArrow = currentPageOfResults === 1 ? _react2.default.createElement(
+				'div',
+				{ className: 'paginate-nav hand-on-hover' },
+				_react2.default.createElement('i', { className: 'fa fa-chevron-left ', 'aria-hidden': 'true' })
+			) : _react2.default.createElement(
+				'div',
+				{ className: 'paginate-nav active hand-on-hover', onClick: goToPage, 'data-page-number': 'back' },
+				_react2.default.createElement('i', { className: 'fa fa-chevron-left ', 'aria-hidden': 'true' })
+			);
+
+			var rightNavArrow = currentPageOfResults === totalPages ? _react2.default.createElement(
+				'div',
+				{ className: 'paginate-nav hand-on-hover' },
+				_react2.default.createElement('i', { className: 'fa fa-chevron-right ', 'aria-hidden': 'true' })
+			) : _react2.default.createElement(
+				'div',
+				{ className: 'paginate-nav active hand-on-hover', onClick: goToPage, 'data-page-number': 'forward' },
+				_react2.default.createElement('i', { className: 'fa fa-chevron-right ', 'aria-hidden': 'true' })
+			);
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'pagination-container' },
+				_react2.default.createElement(
+					'ul',
+					{ className: 'pagination-list' },
+					leftNavArrow,
+					pageNumbersDisplay,
+					rightNavArrow
+				)
+			);
+		}
+	}]);
+
+	return PaginationDisplay;
+}(_react2.default.Component);
+
+;
+
+exports.default = PaginationDisplay;
+
+/***/ }),
+/* 334 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _react = __webpack_require__(7);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var PageNumberButton = function PageNumberButton(_ref) {
+	var pageNumber = _ref.pageNumber,
+	    currentPageOfResults = _ref.currentPageOfResults,
+	    goToPage = _ref.goToPage;
+
+	var klass = pageNumber === currentPageOfResults ? "active hand-on-hover" : "hand-on-hover";
+	return _react2.default.createElement(
+		"li",
+		{ className: klass, onClick: goToPage, "data-page-number": pageNumber },
+		pageNumber
+	);
+};
+
+exports.default = PageNumberButton;
 
 /***/ })
 /******/ ]);
