@@ -11569,7 +11569,7 @@ var ListItem = function (_React$Component) {
 			//unable to determine from data what indicates doctor practicing at more than one location
 			//from mockup: We found [10] Dan Lee's practicing nearby at [27] locations
 			//assumption (for now): doctor practices at one location
-			var infoText = result[0].first_name ? 'We found ' + result.length + ' providers practicing at ' + result.length + ' locations' : 'We found this hospital provider near you.';
+			var infoText = result[0].first_name ? 'We found ' + result.length + ' providers practicing nearby at ' + result.length + ' locations' : 'We found this hospital provider near you';
 
 			return _react2.default.createElement(
 				'div',
